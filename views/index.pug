@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Crud Node.js - MongoDB
+    link(href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet")
+    link(rel="stylesheet", href="main.css")
+  body
+    header
+      h1.title
+        span CRUD
+        |  Node.js MongoDB
+
+    .register.containerForm
+      form
+        fieldset
+          legend Ingresa tu usuario
+          label(for="name") Ingresa tu nombre
+            input(type="text" id="name" placeholder="Ingresa tu nombre")
+          label(for="password") Ingresa tu contraseña
+            input(type="password" id="password" placeholder="Ingresa tu contraseña")
+          label(for="email") Ingresa tu correo electrónico
+            input(type="text" id="email" placeholder="Ingresa tu correo electrónico")
+          label(for="age") Ingresa tu Edad
+            input(type="number" max="99" min="18" id="age" value="18")
+          button(type="submit" id="create") Enviar
+
+    .update.containerForm
+      form
+        fieldset
+          legend Actualiza tu usuario
+          label(for="user") Cual es tu nombre
+          div.container-search
+            input.searchText(type="text" id="currentName" placeholder="Ingresa tu nombre actual")
+            button#search.search Buscar
+          small.alert-invisible#showAlert Usuario no encontrado
+          hr
+          small (solo cambia los campos que necesites)
+          label(for="newName") Cambia tu nombre
+            input(type="text" id="newName" placeholder="Cambia tu nombre")
+          label(for="newPassword") Cambia tu contraseña
+            input(type="password" id="newPassword" placeholder="Cambia tu contraseña")
+          label(for="newEmail") Cambia tu correo electrónico
+            input(type="text" id="newEmail" placeholder="Cambia tu correo electrónico")
+          label(for="newAge") Ingresa nueva Edad
+            input(type="number" max="99" min="18" id="newAge" value="18")
+          button(type="submit" id="update") Actualizar
+
+    .container
+      each user, key in users
+        .users
+          .contador= key + 1
+          .delete X
+          h3.name-card= user.name
+          p= user.password
+          p= user.email
+          p= user.age
+
+
+    script(src="main.js")
